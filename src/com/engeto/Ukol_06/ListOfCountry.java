@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ListOfCountry {
-    List<Country> listOfCoutry = new ArrayList<>();
+    List<Country> listOfCountry = new ArrayList<>();
 
     // Import data from file
     public static ListOfCountry importDataFromFile(String filename, String delimiter) throws CountryException {
         // initialize variables
         String shortCountryName = "";
         String longCountryName = "";
-        double basicDph = 0.0;
-        double reducedDph = 0.0;
-        boolean useSpecialDph = false;
+        Double basicDph = 0.0;
+        Double reducedDph = 0.0;
+        Boolean useSpecialDph = false;
         int lineNumber = 0;
         String nextLine = "";
         String[] dataItems = new String[1];
@@ -29,12 +29,15 @@ public class ListOfCountry {
                 lineNumber++;
                 nextLine = scanner.nextLine();
                 dataItems = nextLine.split(delimiter);
-                System.out.println(dataItems[0] +" "+ dataItems[1] +" "+ dataItems[3] +" "+ dataItems[4]);
+                //System.out.println(dataItems[0] +" "+ dataItems[1] +" "+ dataItems[3] +" "+ dataItems[4]);
                 shortCountryName = dataItems[0];
                 longCountryName = dataItems[1];
-                basicDph = dataItems[2];
-                reducedDph = dataItems[3];
-                useSpecialDph = dataItems[4];
+                basicDph = Double.parseDouble(dataItems[2].replace(",","."));
+                reducedDph = Double.parseDouble(dataItems[3].replace(",","."));
+                useSpecialDph = Boolean.parseBoolean(dataItems[4]);
+                //System.out.println(shortCountryName +" "+ longCountryName +" "+ basicDph +" "+ reducedDph +" "+ useSpecialDph);
+                importedCountryData.addCountry(
+                        new Country(shortCountryName, longCountryName, basicDph, reducedDph, useSpecialDph));
             }
 
         } catch (FileNotFoundException e) {
@@ -44,4 +47,13 @@ public class ListOfCountry {
         return importedCountryData;
     }
 
+    public void addCountry(Country country) {
+        listOfCountry.add(country);
+    };
+
+    public void print() {
+        for (Country country : listOfCountry) {
+            System.out.println(country);
+        }
+    };
 }

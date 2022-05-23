@@ -1,6 +1,7 @@
 package com.engeto.Ukol_06;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -15,6 +16,7 @@ public class Main {
 
         try {
             countries = ListOfCountry.importDataFromFile(FILENAME, DELIMITER);
+
         } catch (CountryException e) {
             System.err.println(
                     "Chyba při ančtení souboru. " + FILENAME + "\n"
@@ -22,5 +24,10 @@ public class Main {
             System.exit(STATUS_CANNOT_READ_FILE);
         }
 
-    }
-}
+        countries.print();
+
+
+
+
+    } // END psvm
+} // END Main
