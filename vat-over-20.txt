@@ -1,0 +1,28 @@
+LU	Luxembourg	17.0	14.0	true
+MT	Malta	18.0	7.0	false
+CY	Cyprus	19.0	9.0	false
+DE	Germany	19.0	7.0	false
+AT	Austria	20.0	10.0	true
+BG	Bulgaria	20.0	9.0	false
+EE	Estonia	20.0	9.0	false
+FR	France	20.0	10.0	false
+RO	Romania	20.0	9.0	false
+SK	Slovakia	20.0	10.0	false
+GB	United Kingdom	20.0	5.0	false
+BE	Belgium	21.0	12.0	true
+CZ	Czech Republic	21.0	15.0	false
+ES	Spain	21.0	10.0	false
+LV	Latvia	21.0	12.0	false
+LT	Lithuania	21.0	9.0	false
+NL	Netherlands	21.0	6.0	false
+IT	Italy	22.0	10.0	false
+SI	Slovenia	22.0	9.5	false
+IE	Ireland	23.0	13.5	true
+PL	Poland	23.0	8.0	false
+PT	Portugal	23.0	13.0	true
+GR	Greece	24.0	13.0	false
+FI	Finland	24.0	14.0	false
+DK	Denmark	25.0	25.0	false
+HR	Croatia	25.0	13.0	false
+SE	Sweden	25.0	12.0	false
+HU	Hungary	27.0	18.0	false

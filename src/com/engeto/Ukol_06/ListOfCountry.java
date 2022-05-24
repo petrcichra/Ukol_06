@@ -48,7 +48,7 @@ public class ListOfCountry {
 
 
 
-        String filename = "vat-over-20.txt"; // default value
+        String filename; // default value
         String dph;
         Double dphNum = 20.0; //default value
         Scanner input = new Scanner(System.in);
@@ -58,12 +58,16 @@ public class ListOfCountry {
         System.out.print("Zadej sazbu DPH: ");
         dph = input.nextLine();
 
-        if (filename != "" || !filename.isEmpty()) {
-            dphNum = Double.parseDouble(dph);
-            filename = ""+filename+"-over-"+dphNum+".txt";
+        // filename and dph
+        if ((!filename.equals("")) && (!dph.equals("") )) {
+            dphNum = Double.parseDouble(dph.replace(",","."));
+            int intDph = dphNum.intValue();
+            filename = ""+filename+"-over-"+intDph+".txt";
             System.out.println("Název souboru se jmenuje podle toho názvu souboru a sazby DPH. Název souboru: " + filename);
         } else {
-            System.out.println("Zmáčkl si enter! Název souboru a dph mají vychozí hodnoty: " + filename + " | "+ dphNum);
+            int intDph = dphNum.intValue();
+            filename = "vat-over-"+intDph+".txt";
+            System.out.println("Zmáčkl si enter! Název souboru a dph mají vychozí hodnoty: " + filename + " | "+ intDph);
         }
 
         // vytvoření kolekce

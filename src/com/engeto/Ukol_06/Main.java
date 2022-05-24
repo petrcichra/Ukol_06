@@ -26,7 +26,7 @@ public class Main {
         }
 
         //countries.printAllCountry();
-        countries.printCountrySorted20DPH();
+        //countries.printCountrySorted20DPH();
         countries.exportDataToFile(DELIMITER);
 
 
