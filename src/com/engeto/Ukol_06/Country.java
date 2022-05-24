@@ -1,6 +1,6 @@
 package com.engeto.Ukol_06;
 
-public class Country {
+public class Country implements Comparable<Country> {
     private String shortCountryName;
     private String longCountryName;
     private Double basicDph;
@@ -15,8 +15,35 @@ public class Country {
         this.useSpecialDph = useSpecialDph;
     }
 
+    public Double getBasicDph() {
+        return basicDph;
+    }
+
+    public String getShortCountryName() {
+        return shortCountryName;
+    }
+
+    public String getLongCountryName() {
+        return longCountryName;
+    }
+
+    public Double getReducedDph() {
+        return reducedDph;
+    }
+
+    public Boolean getUseSpecialDph() {
+        return useSpecialDph;
+    }
+
     @Override
     public String toString() {
         return longCountryName + " ("+shortCountryName+"): " + basicDph + " %";
+    }
+
+
+    @Override
+    public int compareTo(Country other) {
+        int compareDPH = basicDph.compareTo(other.basicDph);
+        return compareDPH;
     }
 }

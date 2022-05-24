@@ -1,11 +1,7 @@
 package com.engeto.Ukol_06;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class ListOfCountry {
     List<Country> listOfCountry = new ArrayList<>();
@@ -47,13 +43,92 @@ public class ListOfCountry {
         return importedCountryData;
     }
 
+    // export data to new file
+    public void exportDataToFile (String delimiter) {
+
+
+
+        String filename = "vat-over-20.txt"; // default value
+        String dph;
+        Double dphNum = 20.0; //default value
+        Scanner input = new Scanner(System.in);
+        System.out.print("Zadej název souboru: ");
+        filename = input.nextLine();
+        //System.out.println("\n");
+        System.out.print("Zadej sazbu DPH: ");
+        dph = input.nextLine();
+
+        if (filename != "" || !filename.isEmpty()) {
+            dphNum = Double.parseDouble(dph);
+            filename = ""+filename+"-over-"+dphNum+".txt";
+            System.out.println("Název souboru se jmenuje podle toho názvu souboru a sazby DPH. Název souboru: " + filename);
+        } else {
+            System.out.println("Zmáčkl si enter! Název souboru a dph mají vychozí hodnoty: " + filename + " | "+ dphNum);
+        }
+
+        // vytvoření kolekce
+        System.out.println("=================LIST====================");
+        Collections.sort(listOfCountry);
+        List<Country> otherCountry = new ArrayList<>();
+        for (Country country : listOfCountry) {
+            if (country.getBasicDph() >= dphNum) {
+                System.out.println(country);
+            } else {
+                otherCountry.add(country);
+            }
+        }
+        System.out.println("------------------------------------");
+        System.out.print("Sazba VAT "+dph+" % nebo nižší nebo používají speciální sazbu: ");
+        otherCountry.forEach(state -> System.out.print(state.getShortCountryName()+", "));
+        System.out.println("\n"+"=================END OF LIST====================");
+
+        // export do souboru
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            for (Country country : listOfCountry) {
+                writer.println(
+                        country.getShortCountryName()
+                        +delimiter
+                        +country.getLongCountryName()
+                        +delimiter
+                        +country.getBasicDph()
+                        +delimiter
+                        +country.getReducedDph()
+                        +delimiter
+                        +country.getUseSpecialDph()
+                );
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // add object into list
     public void addCountry(Country country) {
         listOfCountry.add(country);
     };
 
-    public void print() {
+    // print all country and dph
+    public void printAllCountry() {
         for (Country country : listOfCountry) {
             System.out.println(country);
         }
-    };
+    }
+
+    // print sorted list, dph >= 20
+    public  void printCountrySorted20DPH() {
+        Collections.sort(listOfCountry);
+        List<Country> otherCountry = new ArrayList<>();
+        for (Country country : listOfCountry) {
+            if (country.getBasicDph() >= 20) {
+                System.out.println(country);
+            } else {
+                otherCountry.add(country);
+            }
+        }
+        System.out.println("=====================================");
+        System.out.print("Sazba VAT 20 % nebo nižší nebo používají speciální sazbu: ");
+        otherCountry.forEach(state -> System.out.print(state.getShortCountryName()+", "+"\n"));
+    }
+
+
 }

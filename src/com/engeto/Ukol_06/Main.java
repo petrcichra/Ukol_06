@@ -2,6 +2,7 @@ package com.engeto.Ukol_06;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -24,7 +25,9 @@ public class Main {
             System.exit(STATUS_CANNOT_READ_FILE);
         }
 
-        countries.print();
+        //countries.printAllCountry();
+        countries.printCountrySorted20DPH();
+        countries.exportDataToFile(DELIMITER);
 
 
 
