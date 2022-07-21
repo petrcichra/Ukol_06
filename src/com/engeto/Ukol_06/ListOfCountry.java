@@ -90,6 +90,8 @@ public class ListOfCountry {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Country country : listOfCountry) {
                 writer.println(
+                        // verze, ktera zapise vsechna data oddelene tabulatorem
+                        /*
                         country.getShortCountryName()
                         +delimiter
                         +country.getLongCountryName()
@@ -99,6 +101,13 @@ public class ListOfCountry {
                         +country.getReducedDph()
                         +delimiter
                         +country.getUseSpecialDph()
+                         */
+
+                        // verze kdy se data zapisi tak jako na obrazovku
+                        country.getLongCountryName()
+                        +" ("+ country.getShortCountryName() +"):"
+                        +delimiter
+                        +country.getBasicDph() + '%'
                 );
             }
         } catch (IOException e) {
@@ -119,11 +128,11 @@ public class ListOfCountry {
     }
 
     // print sorted list, dph >= 20
-    public  void printCountrySorted20DPH() {
+    public  void printCountrySorted20DPH(int dph) {
         Collections.sort(listOfCountry);
         List<Country> otherCountry = new ArrayList<>();
         for (Country country : listOfCountry) {
-            if (country.getBasicDph() >= 20) {
+            if (country.getBasicDph() >= dph) {
                 System.out.println(country);
             } else {
                 otherCountry.add(country);
