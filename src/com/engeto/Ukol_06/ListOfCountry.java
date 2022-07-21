@@ -139,7 +139,7 @@ public class ListOfCountry {
             }
         }
         System.out.println("=====================================");
-        System.out.print("Sazba VAT 20 % nebo nižší nebo používají speciální sazbu: ");
+        System.out.print("Sazba VAT " + dph + " % nebo nižší nebo používají speciální sazbu: ");
         otherCountry.forEach(state -> System.out.print(state.getShortCountryName()+", "+"\n"));
     }
 
