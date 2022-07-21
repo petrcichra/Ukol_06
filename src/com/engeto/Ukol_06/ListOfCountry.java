@@ -52,7 +52,7 @@ public class ListOfCountry {
         String dph;
         Double dphNum = 20.0; //default value
         Scanner input = new Scanner(System.in);
-        System.out.print("Zadej název souboru: ");
+        System.out.print("Zadej název, který se použije pro výstupní export: ");
         filename = input.nextLine();
         //System.out.println("\n");
         System.out.print("Zadej sazbu DPH: ");
